@@ -12,7 +12,7 @@ Module to work with Google Docs
   </li>
 </ul>  
 
-![alt text](https://raw.githubusercontent.com/rocketbot-cl/GoogleDocs/master/example/cered.png)
+![alt text](https://raw.githubusercontent.com/rocketbot-cl/GoogleDocs/master/example/cred.png)
 
 <h2>Link to API Documentation</h2>
 
