@@ -1,3 +1,3 @@
 ## GoogleDocs
 
- view the documentation at: https://github.com/rocketbot-cl/SAPB1/blob/master/example/Manual_GoogleDocs.pdf
+ view the documentation at: https://github.com/rocketbot-cl/GoogleDocs/blob/master/example/Manual_GoogleDocs.pdf
