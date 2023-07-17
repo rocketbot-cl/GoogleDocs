@@ -27,7 +27,7 @@ import os
 import sys
 
 base_path = tmp_global_obj["basepath"]
-cur_path = base_path + 'modules' + os.sep + 'OfficeWord' + os.sep + 'libs' + os.sep
+cur_path = base_path + 'modules' + os.sep + 'GoogleDocs' + os.sep + 'libs' + os.sep
 sys.path.append(cur_path)
 
 import pickle
