@@ -20,6 +20,7 @@ Get permissions to handle Google Docs with Rocketbot
 |Parameters|Description|example|
 | --- | --- | --- |
 |Credentials file path|Select the G-Suite credentials file|Path|
+|Assign result to variable|Assign the connection result to a variable|result|
 
 ### New Document
   
@@ -27,7 +28,7 @@ Create new  Google Docs document.
 |Parameters|Description|example|
 | --- | --- | --- |
 |Document name|Name of the document to create|Name: |
-|Variable where the ID will be saved|Variable where the ID of the created document will be saved|{Result}|
+|Variable where the ID will be saved|Variable where the ID of the created document will be saved|result|
 
 ### Write in document
   
@@ -43,7 +44,7 @@ Read a Google Docs document
 |Parameters|Description|example|
 | --- | --- | --- |
 |Document ID|Google Docs document ID|1XfKS0_ftXfKSpO_iX6udViX6udViX6udV_iX6udV|
-|Variable where the result will be saved|Variable where the result of reading the document will be saved|{Result}|
+|Variable where the result will be saved|Variable where the result of reading the document will be saved|result|
 
 ### Add Picture
   
@@ -51,4 +52,4 @@ Add an image to the document.
 |Parameters|Description|example|
 | --- | --- | --- |
 |Document ID|Document ID to which the image will be added. The document ID is in the document URL|1XfKS0_ftXfKSpO_iX6udViX6udViX6udV_iX6udV|
-|Image Url|Url of the image that will be added to the document|image.jpg|
+|Image Url|Url of the image that will be added to the document|https://example.com/image.jpg|
