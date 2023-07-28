@@ -28,7 +28,14 @@ import sys
 
 base_path = tmp_global_obj["basepath"]
 cur_path = base_path + 'modules' + os.sep + 'GoogleDocs' + os.sep + 'libs' + os.sep
-sys.path.append(cur_path)
+
+cur_path_x64 = os.path.join(cur_path, 'Windows' + os.sep +  'x64' + os.sep)
+cur_path_x86 = os.path.join(cur_path, 'Windows' + os.sep +  'x86' + os.sep)
+
+if sys.maxsize > 2**32 and cur_path_x64 not in sys.path:
+    sys.path.append(cur_path_x64)
+elif sys.maxsize <= 2**32 and cur_path_x86 not in sys.path:
+    sys.path.append(cur_path_x86)
 
 import pickle
 import os.path
@@ -69,6 +76,7 @@ global document_id
 
 if module == "GoogleSuite":
     credential_path = GetParams("credentials")
+    result = GetParams("result")
     print(credential_path)
     if not os.path.exists(credential_path):
         raise Exception("El archivo de credenciales no existe en la ruta especificada")
@@ -76,21 +84,29 @@ if module == "GoogleSuite":
     SCOPES = ['https://www.googleapis.com/auth/documents', 'https://www.googleapis.com/auth/drive']
 
     creds = None
+    try:
+        if os.path.exists('token-docs.pickle'):
+            with open('token-docs.pickle', 'rb') as token:
+                creds = pickle.load(token)
+        # If there are no (valid) credentials available, let the user log in.
+        if not creds or not creds.valid:
+            if creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+            else:
+                flow = InstalledAppFlow.from_client_secrets_file(
+                    credential_path, SCOPES)
+                creds = flow.run_local_server(port=0)
+            # Save the credentials for the next run
+            with open('token-docs.pickle', 'wb') as token:
+                pickle.dump(creds, token)
 
-    if os.path.exists('token-docs.pickle'):
-        with open('token-docs.pickle', 'rb') as token:
-            creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                credential_path, SCOPES)
-            creds = flow.run_local_server(port=0)
-        # Save the credentials for the next run
-        with open('token-docs.pickle', 'wb') as token:
-            pickle.dump(creds, token)
+        if result:
+            SetVar(result, True)
+    except Exception as e:
+        PrintException()
+        if result:
+            SetVar(result, False)
+        raise e
 
 if module == "new_docs":
     title = GetParams("doc_name")
@@ -105,7 +121,7 @@ if module == "new_docs":
     document_id = response["documentId"]
     if result:
         SetVar(result, document_id)
-    print(response)
+
 
 if module == "write":
     doc_id = GetParams("doc_id")
