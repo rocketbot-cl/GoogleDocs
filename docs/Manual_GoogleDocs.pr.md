@@ -12,6 +12,24 @@ Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
 2. Automático: Ao entrar no Rocketbot Studio na margem direita você encontrará a seção **Addons**, selecione **Install Mods**, procure o módulo desejado e aperte instalar.  
 
 
+## Como usar este módulo
+
+Antes de usar este módulo, você deve registrar seu aplicativo no Google Cloud Portal.
+
+1. Faça login com uma conta do google no seguinte link: https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard
+2. Preencha o formulário e depois pressione Criar
+3. No Menu de Navegação (Esquerda), entre em API e Serviços
+4. Na seção superior, entre em "+ HABILITAR API E SERVIÇOS"
+5. Procure por "Google Docs API", selecione e finalmente habilite
+6. Novamente vá para Menu de Navegação (Esquerda) > API e Serviços > Credenciais
+7. Pressione o botão "Configurar tela de consentimento". No tipo de usuário, escolha se possível "Interno". Se não estiver disponível, você deve selecionar "Externo" e preencher os campos obrigatórios.
+8. Preencha os campos obrigatórios com as informações do seu aplicativo e pressione Salvar e continuar.
+9. Na etapa 2, clique em "Adicionar ou remover permissões", filtre "Google Docs API", marque todas as permissões e pressione Atualizar. Em seguida, pressione Salvar e continuar.
+10. Volte para "Credenciais"
+11. Pressione Criar Credenciais > ID do cliente OAuth, selecione como Tipo de Aplicativo: Aplicativo de desktop, coloque um nome e crie.
+12. Baixe o arquivo JSON de credenciais.
+13. Se o aplicativo foi criado como "Externo", você deve ir para Menu de Navegação (Esquerda) > Tela de Consentimento e adicionar usuário na seção "Usuários de teste"
+
 ## Descrição do comando
 
 ### Configurar credenciais G-Suite
