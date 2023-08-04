@@ -424,7 +424,7 @@
             "required": true
           },
           {
-            "type": "file_select",
+            "type": "input",
             "placeholder": {
               "es": "https://example.com/image.jpg",
               "en": "https://example.com/image.jpg",
